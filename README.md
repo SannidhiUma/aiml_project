@@ -1,102 +1,62 @@
-# aiml_project
-AIML_Project
-Market Sales Prediction using Random Forest
-Project Overview
+from reportlab.platypus import SimpleDocTemplate, Paragraph
+from reportlab.lib.styles import getSampleStyleSheet
 
-This project predicts daily sales for multiple products using historical sales data and time-based features. The model uses Random Forest Regression to forecast sales, allowing businesses to optimize inventory, plan marketing campaigns, and make data-driven decisions.
+file_path = "/mnt/data/Market_Sales_Prediction_README.pdf"
 
-Dataset
+doc = SimpleDocTemplate(file_path)
+styles = getSampleStyleSheet()
+content = []
 
-File: market_sales.csv
+text = """
+<b>AIML_Project</b><br/><br/>
 
-Columns:
+<b>Market Sales Prediction using Random Forest</b><br/><br/>
 
-date: Date of the sales record
+<b>Project Overview</b><br/>
+This project predicts daily sales for multiple products using historical sales data and time-based features. 
+The model uses Random Forest Regression to forecast sales, allowing businesses to optimize inventory, 
+plan marketing campaigns, and make data-driven decisions.<br/><br/>
 
-product_id: Unique identifier for each product
+<b>Dataset</b><br/>
+File: market_sales.csv<br/>
+Columns:<br/>
+date: Date of the sales record<br/>
+product_id: Unique identifier for each product<br/>
+sales: Number of units sold<br/><br/>
 
-sales: Number of units sold
+<b>Features</b><br/>
+Time-based features: year, month, day, weekday, is_weekend<br/>
+Seasonal features: month_sin, month_cos<br/>
+Lag features: lag_1, lag_7, lag_14<br/><br/>
 
-The dataset contains historical sales data for multiple products over time.
+<b>Product Encoding</b><br/>
+product_id is one-hot encoded to handle categorical values.<br/><br/>
 
-Features
+<b>Model</b><br/>
+Algorithm: Random Forest Regressor<br/>
+Hyperparameters: n_estimators=400, max_depth=10, min_samples_split=2, 
+min_samples_leaf=1, random_state=42, n_jobs=-1<br/>
+Train-test split: 80/20<br/><br/>
 
-The following features are generated for model training:
+<b>Performance Metrics</b><br/>
+MAE, RMSE, R² Score<br/><br/>
 
-Time-based features
+<b>Visualization</b><br/>
+Actual vs Predicted Sales (first 150 time steps)<br/><br/>
 
-year
+<b>Requirements</b><br/>
+Python 3.8+, pandas, numpy, matplotlib, scikit-learn<br/><br/>
 
-month
+<b>Usage</b><br/>
+Place market_sales.csv in the project folder and run:<br/>
+python sales_prediction.py<br/><br/>
 
-day
+<b>Output</b><br/>
+Model evaluation metrics and a plot of actual vs predicted sales.
+"""
 
-weekday
+content.append(Paragraph(text, styles["Normal"]))
+doc.build(content)
 
-is_weekend: Binary flag for weekends
+file_path
 
-Seasonal features
-
-month_sin
-
-month_cos: Cyclical encoding of months to capture seasonality
-
-Lag features
-
-lag_1: Sales of the previous day
-
-lag_7: Sales of 7 days ago
-
-lag_14: Sales of 14 days ago
-
-Product Encoding
-
-product_id is one-hot encoded to handle categorical values.
-
-Model
-
-Algorithm: Random Forest Regressor
-
-Hyperparameters:
-
-n_estimators = 400
-
-max_depth = 10
-
-min_samples_split = 2
-
-min_samples_leaf = 1
-
-random_state = 42
-
-n_jobs = -1
-
-Trained using an 80/20 train-test split.
-
-Performance Metrics
-
-MAE (Mean Absolute Error)
-
-RMSE (Root Mean Squared Error)
-
-R² Score (Coefficient of Determination)
-
-Metrics are printed in the console after execution.
-
-Visualization
-
-Actual vs Predicted Sales
-
-First 150 time steps plotted for comparison.
-
-Requirements
-
-Python 3.8+
-
-pandas
-
-numpy
-
-matplotlib
-
-scikit-learn
