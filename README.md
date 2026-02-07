@@ -1,13 +1,4 @@
-from reportlab.platypus import SimpleDocTemplate, Paragraph
-from reportlab.lib.styles import getSampleStyleSheet
 
-file_path = "/mnt/data/Market_Sales_Prediction_README.pdf"
-
-doc = SimpleDocTemplate(file_path)
-styles = getSampleStyleSheet()
-content = []
-
-text = """
 <b>AIML_Project</b><br/><br/>
 
 <b>Market Sales Prediction using Random Forest</b><br/><br/>
