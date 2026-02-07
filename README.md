@@ -1,12 +1,9 @@
 
-<b>AIML_Project</b><br/><br/>
+<b>Market Sales Prediction</b><br/><br/>
 
-<b>Market Sales Prediction using Random Forest</b><br/><br/>
-
-<b>Project Overview</b><br/>
-This project predicts daily sales for multiple products using historical sales data and time-based features. 
-The model uses Random Forest Regression to forecast sales, allowing businesses to optimize inventory, 
-plan marketing campaigns, and make data-driven decisions.<br/><br/>
+<b>Overview</b><br/>
+Predict daily sales for multiple products using historical data with Random Forest Regression.
+Helps businesses optimize inventory and make data-driven decisions.<br/><br/>
 
 <b>Dataset</b><br/>
 File: market_sales.csv<br/>
@@ -15,39 +12,40 @@ date: Date of the sales record<br/>
 product_id: Unique identifier for each product<br/>
 sales: Number of units sold<br/><br/>
 
-<b>Features</b><br/>
-Time-based features: year, month, day, weekday, is_weekend<br/>
-Seasonal features: month_sin, month_cos<br/>
-Lag features: lag_1, lag_7, lag_14<br/><br/>
+<b>Feature Engineering</b><br/>
+1. Date features: year, month, day, weekday, is_weekend<br/>
+2. Cyclical encoding for months: month_sin, month_cos<br/>
+3. Label encoding for categorical columns<br/><br/>
 
-<b>Product Encoding</b><br/>
-product_id is one-hot encoded to handle categorical values.<br/><br/>
+<b>Preprocessing</b><br/>
+- Fill missing numeric values with mean<br/>
+- Drop original date column after feature extraction<br/><br/>
 
 <b>Model</b><br/>
-Algorithm: Random Forest Regressor<br/>
-Hyperparameters: n_estimators=400, max_depth=10, min_samples_split=2, 
-min_samples_leaf=1, random_state=42, n_jobs=-1<br/>
-Train-test split: 80/20<br/><br/>
+Random Forest Regressor<br/>
+n_estimators = 300<br/>
+max_depth = None<br/>
+min_samples_split = 2<br/>
+min_samples_leaf = 1<br/>
+random_state = 42<br/>
+n_jobs = -1<br/><br/>
 
-<b>Performance Metrics</b><br/>
-MAE, RMSE, R² Score<br/><br/>
+<b>Evaluation Metrics</b><br/>
+MAE (Mean Absolute Error)<br/>
+RMSE (Root Mean Squared Error)<br/>
+R2 (Coefficient of Determination)<br/><br/>
 
-<b>Visualization</b><br/>
-Actual vs Predicted Sales (first 150 time steps)<br/><br/>
+<b>How to Run</b><br/>
+1. Install libraries: pandas, numpy, scikit-learn, matplotlib<br/>
+2. Place market_sales.csv in the folder<br/>
+3. Run the script
+<b>Output</b><br/><br/>
+The notebook outputs:<br/>
+- Model evaluation metrics in the console<br/>
+- Plot of <i>Actual vs Predicted Sales</i> for visual comparison
+- Top 10 important features contributing to the prediction<br/>
 
-<b>Requirements</b><br/>
-Python 3.8+, pandas, numpy, matplotlib, scikit-learn<br/><br/>
-
-<b>Usage</b><br/>
-Place market_sales.csv in the project folder and run:<br/>
-python sales_prediction.py<br/><br/>
-
-<b>Output</b><br/>
-Model evaluation metrics and a plot of actual vs predicted sales.
-"""
-
-content.append(Paragraph(text, styles["Normal"]))
-doc.build(content)
-
-file_path
-
+<b>Requirements</b><br/><br/>
+- <b>Python 3.8+</b><br/>
+- <b>Libraries:</b><br/>
+  <br> pandas,numpy,matplotlib,scikit-learn<br/>
